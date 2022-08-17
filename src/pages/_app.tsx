@@ -5,7 +5,7 @@ import Prensentation from 'components/presentation'
 import Request from 'components/request'
 
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps}: AppProps) {
   return (
     <html>
       <TitleLogo />

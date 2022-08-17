@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Image from 'next/image'
 
 const Home: NextPage = () => {
   return (
@@ -8,7 +9,7 @@ const Home: NextPage = () => {
         <h3 id="type"></h3>
         <h4 id="weight"></h4>
         <h5 id="pokeId"></h5>
-        <img id="image" src=""/>
+        <Image id="image" src="" width={200} height={200}/>
     </section>
     </html>
   )

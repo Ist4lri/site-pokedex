@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-async function onClick(userValue) {
+async function onClick(userValue: string) {
     const realUserValue = userValue.toLowerCase()
     
     const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + realUserValue);
     var pokemon = await response.json();
 
-    console.log({pokemon})
+    alert(pokemon.types.map((singleType: { type: { name: any; }; }) => singleType.type.name))
 
     /*
     document.getElementById("name").innerText = "Nom : " + pokemon.name;
