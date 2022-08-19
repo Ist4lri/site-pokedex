@@ -6,15 +6,9 @@ async function onClick(userValue: string) {
     const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + realUserValue);
     var pokemon = await response.json();
 
-    alert(pokemon.types.map((singleType: { type: { name: any; }; }) => singleType.type.name))
+    alert(pokemon.types.map((singleType: { type: { name: any; }; }) => singleType.type.name))  
 
-    /*
-    document.getElementById("name").innerText = "Nom : " + pokemon.name;
-    document.getElementById("weight").innerText = "Il fait " + pokemon.weight + "g";
-    document.getElementById("type").innerText = "Il est de type(s) " + pokemon.types.map((singleType) => singleType.type.name + " ")
-    document.getElementById("pokeId").innerText = "ID du pokémon : " + pokemon.id;
-    document.getElementById("image").setAttribute("src", pokemon.sprites.front_default);
-    */
+    return (pokemon) 
 }
 
 
@@ -33,4 +27,4 @@ function Request() {
     )
 }
 
-export default Request
+export default Request; onClick

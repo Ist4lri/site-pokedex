@@ -4,7 +4,7 @@ import Image from 'next/image'
 const Home: NextPage = () => {
   return (
     <html>
-      <section id="answer">
+    <section id="answer">
         <h2 id="name"></h2>
         <h3 id="type"></h3>
         <h4 id="weight"></h4>
