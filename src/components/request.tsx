@@ -1,6 +1,39 @@
-import { useState } from 'react'
+import React, { ReactNode, useState} from 'react'
+import styled from 'styled-components'
+import { useFetch } from 'utils/hooks/fetch';
 
-async function onClick(userValue: string) {
+const StyledButton = styled.button`
+    border-radius: 1000px
+`;
+
+const Button = ({children, onClick}: {
+    children: ReactNode;
+    onClick: () => void;
+ }) => {
+    return <StyledButton onClick={onClick}>{children}</StyledButton>
+};
+
+const sendRequest = (pokemonRequest: string) => {
+    const pokemon = useFetch('https://pokeapi.co/api/v2/'+ pokemonRequest)
+    
+};
+
+
+
+const Request = () =>{
+    let [inputValue, setInputValue] = useState("")
+    return (
+        <nav>
+            <label>Entrez un nom de pokémon :</label>
+            <input type="text" onChange={(keyPress) => setInputValue(keyPress.target.value)}/>
+            <Button onClick={() => sendRequest(inputValue)}>Request</Button>
+        </nav>
+    );
+};
+
+export default Request
+
+/*async function onClick(userValue: string) {
     const realUserValue = userValue.toLowerCase()
     
     const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + realUserValue);
@@ -11,11 +44,7 @@ async function onClick(userValue: string) {
     return (pokemon) 
 }
 
-
-function Request() {
-    const [inputValue, setInputValue] = useState('')
-    return (
-        <div id="request">
+<div id="request">
         <label>Entrez un nom de Pokémon : <input
                                                 value={inputValue}
                                                 onChange={(e) => setInputValue(e.target.value)}
@@ -24,7 +53,9 @@ function Request() {
         <br></br>
         <div id="exist"></div>
         </div>
-    )
-}
+        
+const [inputValue, setInputValue] = useState('')
 
-export default Request; onClick
+
+
+*/
