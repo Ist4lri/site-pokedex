@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect} from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import styled from "styled-components";
 import useCounter from 'utils/hooks/useCounter';
 
@@ -10,16 +10,16 @@ const Container = styled.div`
 const StyledButton = styled.button`
   background-color: red;
   height: 36px;
-  border-radius: 1000px;
+  border-radius: 1000px; 
 `;
 
 const Button = ({
     children,
     onClick,
-  }: {
+}: {
     children: ReactNode;
     onClick: () => void;
-  }) => {
+}) => {
     return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
@@ -34,13 +34,13 @@ const Counter = ({
     step?: number;
     onChange: (count: number) => void;
 }) => {
-    const {count, increment, decrement} = useCounter( { baseValue, step } );
+    const { count, increment, decrement } = useCounter({ baseValue, step });
 
     useEffect(() => {
         onChange(count);
     }, [count]);
 
-    return (    
+    return (
         <Container>
             <Button onClick={decrement}>-</Button>
             <TextCounter>Count : {count}</TextCounter>

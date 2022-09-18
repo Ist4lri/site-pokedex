@@ -7,19 +7,19 @@ const PokemonListSchema = zod.object({
     name: zod.string(),
 });
 
-const RawPokemonListSchema= zod.object({
+const RawPokemonListSchema = zod.object({
     count: zod.number(),
     next: zod.string().nullable(),
     previous: zod.string().nullable(),
-    results :zod.array(PokemonListSchema),
+    results: zod.array(PokemonListSchema),
 });
 
-type FetchPokemonQuery = {numberOfPokemon: number};
+type FetchPokemonQuery = { numberOfPokemon: number };
 
 const fetchPokemonKeyList = (query: FetchPokemonQuery) => (["get-number-of-pokemon", query]);
 
 export const fetchListPokemon = async (query: FetchPokemonQuery): Promise<PokemonList> => {
-    const {numberOfPokemon} = query;
+    const { numberOfPokemon } = query;
     let pokemonList = undefined;
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${numberOfPokemon}&offset=0`);
     pokemonList = RawPokemonListSchema.parse(await response.json());

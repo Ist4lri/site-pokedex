@@ -31,7 +31,7 @@ const fetchPokemon = async (query: FetchPokemonQuery): Promise<Pokemon> => {
     const { pokemonName } = query;
     let pokemon = undefined;
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-    pokemon = PokemonSchema.parse(await response.json()); 
+    pokemon = PokemonSchema.parse(await response.json());
 
     return {
         pokedexNumber: pokemon.id,

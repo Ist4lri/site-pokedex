@@ -2,7 +2,7 @@ export type PokemonList = {
     pokemonCount: number,
     nextPage: string | undefined,
     previousPage: string | undefined,
-    listOfPokemon : Array<{
+    listOfPokemon: Array<{
         name: string,
     }>,
-};
+}; 

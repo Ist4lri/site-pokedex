@@ -29,35 +29,35 @@ const ListPokemon: NextPage = () => {
   const [numberOfPokemon, setNumberOfPokemon] = useState<number | undefined>(undefined);
   const result = useGetPokemonList(numberOfPokemon ? { numberOfPokemon } : false);
 
-  const request = <RequestNumber initialValue={numberOfPokemon} onSubmit={setNumberOfPokemon}/>
+  const request = <RequestNumber initialValue={numberOfPokemon} onSubmit={setNumberOfPokemon} />
 
-  const {isLoading, isSuccess, isError, ...otherResult} = result;
+  const { isLoading, isSuccess, isError, ...otherResult } = result;
   const { data: fetchedList } = otherResult;
 
-  if (isLoading){
-      return <div>&apos;Veuillez patienter, chargement en cours...&apos;</div>;
+  if (isLoading) {
+    return <div>&apos;Veuillez patienter, chargement en cours...&apos;</div>;
   };
 
-  if (isError){
-      return <div>&apos;Oh oh...il y a eu une erreur...&apos;</div>
+  if (isError) {
+    return <div>&apos;Oh oh...il y a eu une erreur...&apos;</div>
   };
 
   if (isSuccess && fetchedList) {
-    
-    
-    
+
+
+
     return (
       <div>
-      {request}
-      {fetchedList.listOfPokemon.map((onePokemon) => {
-        return (
-          <div>
-            NAME : {onePokemon.name}<br />
-            <Link href={`/${onePokemon.name}`}>{onePokemon.name}</Link><br />
-            <Button onClick={() => router.push(`/${onePokemon.name}`)}>{onePokemon.name}</Button>
-          </div>
-        );
-      })} 
+        {request}
+        {fetchedList.listOfPokemon.map((onePokemon) => {
+          return (
+            <div>
+              NAME : {onePokemon.name}<br />
+              <Link href={`/${onePokemon.name}`}>{onePokemon.name}</Link><br />
+              <Button onClick={() => router.push(`/${onePokemon.name}`)}>{onePokemon.name}</Button>
+            </div>
+          );
+        })}
       </div>
     )
   };
@@ -66,8 +66,8 @@ const ListPokemon: NextPage = () => {
     <>
       {request}
     </>
-   );
+  );
 
-  };
+};
 
 export default ListPokemon

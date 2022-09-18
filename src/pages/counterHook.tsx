@@ -32,13 +32,13 @@ const Container = styled.div`
 const TextCounter = styled.div``;
 
 const PageCounter: NextPage = () => {
-    return (
-        <Container>
-            <Counter baseValue={0} onChange={(count) => {
-                console.log(count);
-            }}/>
-        </Container>
-    )
+  return (
+    <Container>
+      <Counter baseValue={0} onChange={(count) => {
+        console.log(count);
+      }} />
+    </Container>
+  )
 }
 
 export default PageCounter
