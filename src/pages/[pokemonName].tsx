@@ -59,7 +59,7 @@ const Home: NextPage = ({ prefetchedPokemonName }) => {
         <div id="find-me">
           <div id="answer">
             <h2 id="name">NAME : {fetchedPokemon.name}</h2>
-            <h3 id="type">TYPES: {fetchedPokemon.types.map(oneType => <p>{oneType.name}</p>)}</h3>
+            <h3 id="type">TYPES: {fetchedPokemon.types.map(oneType => <p key={oneType.name}>{oneType.name}</p>)}</h3>
             <h4 id="weight">WEIGHT : {fetchedPokemon.weight}</h4>
             <h5 id="pokeId">ID : {fetchedPokemon.pokedexNumber}</h5>
             <img id="image" alt="" src={fetchedPokemon.appearance.shiny.male} width={200} height={200} />

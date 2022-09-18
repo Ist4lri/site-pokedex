@@ -51,7 +51,7 @@ const ListPokemon: NextPage = () => {
         {request}
         {fetchedList.listOfPokemon.map((onePokemon) => {
           return (
-            <div>
+            <div key={onePokemon.name}>
               NAME : {onePokemon.name}<br />
               <Link href={`/${onePokemon.name}`}>{onePokemon.name}</Link><br />
               <Button onClick={() => router.push(`/${onePokemon.name}`)}>{onePokemon.name}</Button>
