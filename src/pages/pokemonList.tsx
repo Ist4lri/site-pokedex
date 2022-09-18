@@ -3,6 +3,9 @@ import styled from "styled-components";
 import React, { ReactNode, useState } from "react";
 import useGetPokemonList from "app/Pokedex/Api/useGetPokemonList";
 import { PokemonList } from "app/Pokedex/Domain/PokemonList";
+import RequestNumber from "app/Pokedex/Ui/requestNumber";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const StyledButton = styled.button`
   background-color: blue;
@@ -22,31 +25,49 @@ const Button = ({
 };
 
 const ListPokemon: NextPage = () => {
-    const [numberOfPokemon, setNumberOfPokemon] = useState<number | undefined>(undefined);
-    const result = useGetPokemonList(numberOfPokemon ? {numberOfPokemon} : false)
-    const {isLoading, isSuccess, isError, ...otherResult} = result;
-    const { data: fetchedList } = otherResult;
+  const router = useRouter();
+  const [numberOfPokemon, setNumberOfPokemon] = useState<number | undefined>(undefined);
+  const result = useGetPokemonList(numberOfPokemon ? { numberOfPokemon } : false);
 
-    if (isLoading){
-        return <div>'Veuillez patienter, chargement en cours...</div>;
-    }
+  const request = <RequestNumber initialValue={numberOfPokemon} onSubmit={setNumberOfPokemon}/>
 
-    if (isError){
-        return <div>'Oh oh...il y a eu une erreur...</div>
-    }
+  const {isLoading, isSuccess, isError, ...otherResult} = result;
+  const { data: fetchedList } = otherResult;
 
-    if (isSuccess && fetchedList) {
-        for (let i = 0; i < fetchedList.listOfPokemon.length; i++){
-            return (
-            <>
-                <div>NAME : {fetchedList.listOfPokemon.map( oneType => <p>{oneType.name}</p> )}</div>
-                <div>URL : {fetchedList.listOfPokemon.map( oneType => <p>{oneType.url}</p> )}</div>
-            </>
-            )
-        };
-    };
+  if (isLoading){
+      return <div>'Veuillez patienter, chargement en cours...</div>;
+  };
 
-    return ( <p>Coucou</p>)
-}
+  if (isError){
+      return <div>'Oh oh...il y a eu une erreur...</div>
+  };
+
+  if (isSuccess && fetchedList) {
+    
+    
+    
+    return (
+      <div>
+      {request}
+      {fetchedList.listOfPokemon.map((onePokemon) => {
+        return (
+          <div>
+            NAME : {onePokemon.name}<br />
+            <Link href={`/${onePokemon.name}`}>{onePokemon.name}</Link><br />
+            <Button onClick={() => router.push(`/${onePokemon.name}`)}>{onePokemon.name}</Button>
+          </div>
+        );
+      })} 
+      </div>
+    )
+  };
+
+  return (
+    <>
+      {request}
+    </>
+   );
+
+  };
 
 export default ListPokemon
