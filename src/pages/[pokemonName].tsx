@@ -45,11 +45,11 @@ const Home: NextPage = ({ prefetchedPokemonName }) => {
   const { data: fetchedPokemon } = otherResult;
 
   if (isLoading) {
-    return <div>'Loading...'</div>;
+    return <div>&apos;Loading...&apos;</div>;
   }
 
   if (isError) {
-    return <div>'Error...'</div>;
+    return <div>&apos;Error...&apos;</div>;
   }
 
   if (isSuccess && fetchedPokemon) {

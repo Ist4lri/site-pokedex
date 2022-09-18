@@ -35,11 +35,11 @@ const ListPokemon: NextPage = () => {
   const { data: fetchedList } = otherResult;
 
   if (isLoading){
-      return <div>'Veuillez patienter, chargement en cours...</div>;
+      return <div>&apos;Veuillez patienter, chargement en cours...&apos;</div>;
   };
 
   if (isError){
-      return <div>'Oh oh...il y a eu une erreur...</div>
+      return <div>&apos;Oh oh...il y a eu une erreur...&apos;</div>
   };
 
   if (isSuccess && fetchedList) {
